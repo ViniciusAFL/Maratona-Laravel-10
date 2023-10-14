@@ -87,7 +87,7 @@
             </li>
             
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="{{ route('produtos.index') }}" class="nav-link px-0 align-middle">
                     <i class="fa-solid fa-box-open"></i> <span class="ms-1 d-none d-sm-inline">Produto</span> </a>
             </li>
  
