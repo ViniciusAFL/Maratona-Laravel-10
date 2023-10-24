@@ -10,7 +10,7 @@
     @csrf
     <div class="mb-3">
       <label class="form-label">Nome</label>
-      <input type="text" name="nome" class="form-control @error('nome') is-invalid @enderror">
+      <input type="text" value="{{ old('nome') }}" name="nome" class="form-control @error('nome') is-invalid @enderror">
       @if ($errors->has('nome'))
         <div class="invalid-feedback">
           {{$errors->first('nome')}}
@@ -19,7 +19,7 @@
     </div>
     <div class="mb-3">
       <label class="form-label">Valor</label>
-      <input name="valor" class="form-control @error('valor') is-invalid @enderror">
+      <input id="mascara_valor" value="{{old ('valor')}}" name="valor" class="form-control @error('valor') is-invalid @enderror">
       @if ($errors->has('valor'))
       <div class="invalid-feedback">
         {{$errors->first('valor')}}

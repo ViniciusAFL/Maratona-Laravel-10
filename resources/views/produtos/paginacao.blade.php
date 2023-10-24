@@ -33,7 +33,7 @@
                         <td>
                             <meta name="csrf-token" content="{{csrf_token()}}">
                             <a onclick="deleteRegistroPaginacao(' {{route('produtos.delete')}} ', {{$prod->id}})" class="btn btn-danger btn-sm">Excluir</a>
-                            <a href="" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="{{ route('produtos.atualizar', ['id'=>$prod->id]) }}" class="btn btn-primary btn-sm">Editar</a>
                         </td>
                     </tr>
                     
