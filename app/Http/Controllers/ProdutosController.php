@@ -29,6 +29,7 @@ class ProdutosController extends Controller
         $buscaregis = Produto::find($id);
         $buscaregis->delete();
 
+        Toastr::warning('Deletado com sucesso!');
         return response()->json(['success' => true]);
     }
 

@@ -92,7 +92,7 @@
             </li>
  
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="{{ route('clientes.index') }}" class="nav-link px-0 align-middle">
                     <i class="fa-solid fa-users"></i> <span class="ms-1 d-none d-sm-inline">Clientes</span> </a>
             </li>
 

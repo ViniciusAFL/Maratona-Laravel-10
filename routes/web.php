@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ProdutosController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,22 @@ Route::prefix('produtos')
     //Atualiza update
     Route::get('/AtualizarProduto/{id}', 'AtualizarProduto')->name('produtos.atualizar');
     Route::put('/AtualizarProduto/{id}', 'AtualizarProduto')->name('produtos.atualizar');
+
+
+});
+
+Route::prefix('Clientes')
+->controller(ClientesController::class)
+->group(function () {
+    Route::get('/', 'index')->name('clientes.index');
+    Route::delete('/', 'delete')->name('clientes.delete');
+    //Cadastro Create
+    Route::get('/cadastrarCliente', 'cadastrarCliente')->name('clientes.cadastrar');
+    Route::post('/cadastrarCliente', 'cadastrarCliente')->name('clientes.cadastrar');
+
+    //Atualiza update
+    Route::get('/AtualizarCliente/{id}', 'AtualizarCliente')->name('clientes.atualizar');
+    Route::put('/AtualizarCliente/{id}', 'AtualizarCliente')->name('clientes.atualizar');
 
 
 });

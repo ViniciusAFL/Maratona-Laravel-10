@@ -1,0 +1,70 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\Cliente;
+use Illuminate\Http\Request;
+use App\Models\Componentes;
+use Brian2694\Toastr\Facades\Toastr;
+
+class ClientesController extends Controller
+{
+    public function __construct(Cliente $cliente)
+    {
+       $this->Cliente = $cliente;
+    }
+
+    public function index(Request $request)  
+    {   
+        $pesquisar = $request->pesquisar;
+        $findCliente = $this->Cliente->getClientesPesquisarIndex(search: $pesquisar ?? '');
+
+        return view('clientes.paginacao', compact('findCliente'));
+    }
+
+    public function delete(Request $request)  
+    {   
+        $id = $request->id;
+        $buscaregis = Cliente::find($id);
+        $buscaregis->delete();
+
+        Toastr::warning('Deletado com sucesso!');
+        return response()->json(['success' => true]);
+    }
+
+    public function cadastrarCliente(Request $request) 
+    {
+        if($request->method() == "POST"){
+            $prods = $request->all();
+            $componentes = new Componentes();
+            $prods['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($prods['valor']);
+            Cliente::create($prods);
+
+            Toastr::success('Cadastrado com sucesso!');
+            return redirect()
+            ->route('produtos.index');
+        };
+        
+
+        return view('clientes.create');
+    }
+
+    public function AtualizarCliente(Request $request, int $id) 
+    {   
+        if($request->method() == "PUT"){
+            //Atualiza os dados
+             $prods = $request->all();
+             $componentes = new Componentes();
+             $prods['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($prods['valor']);
+             $buscaregistro = Cliente::find($id);
+             $buscaregistro->update($prods);
+
+             return redirect()
+             ->route('produtos.index');
+        };
+        
+        //mostrar os dados
+        $findproduto = Cliente::where('id', '=', $id)->first();
+        return view('clientes.atualiza', compact('findproduto'));
+    }
+}
