@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Models\Componentes;
 use Brian2694\Toastr\Facades\Toastr;
+use App\Http\Requests\FormRequestClientes;
 
 class ClientesController extends Controller
 {
@@ -32,17 +33,15 @@ class ClientesController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function cadastrarCliente(Request $request) 
+    public function cadastrarCliente(FormRequestClientes $request) 
     {
         if($request->method() == "POST"){
             $prods = $request->all();
-            $componentes = new Componentes();
-            $prods['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($prods['valor']);
+            
             Cliente::create($prods);
-
             Toastr::success('Cadastrado com sucesso!');
             return redirect()
-            ->route('produtos.index');
+            ->route('clientes.index');
         };
         
 

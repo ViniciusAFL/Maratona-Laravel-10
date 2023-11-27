@@ -3,10 +3,10 @@
 @section('content')
 
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Criar novo produto</h1>
+    <h1 class="h2">Criar novo Cliente</h1>
 </div>
 
-<form method="POST" action="{{ route('produtos.cadastrar') }}">
+<form method="POST" action="{{ route('clientes.cadastrar') }}">
     @csrf
     <div class="mb-3">
       <label class="form-label">Nome</label>
@@ -15,21 +15,65 @@
         <div class="invalid-feedback">
           {{$errors->first('nome')}}
         </div>
-      @endif
+        @endif
     </div>
     <div class="mb-3">
-      <label class="form-label">Valor</label>
-      <input id="mascara_valor" value="{{old ('valor')}}" name="valor" class="form-control @error('valor') is-invalid @enderror">
-      @if ($errors->has('valor'))
+      <label class="form-label">E-mail</label>
+      <input value="{{old ('email')}}" name="email" class="form-control @error('email') is-invalid @enderror">
+      @if ($errors->has('email'))
       <div class="invalid-feedback">
-        {{$errors->first('valor')}}
+        {{$errors->first('email')}}
       </div>
-    @endif
+      @endif
     </div>
+
+    <div class="mb-3">
+      <label class="form-label">CEP</label>
+      <input id="cep" value="{{old ('cep')}}" name="cep" class="form-control @error('cep') is-invalid @enderror">
+      @if ($errors->has('cep'))
+      <div class="invalid-feedback">
+        {{$errors->first('cep')}}
+      </div>
     
-    <button type="submit" class="btn btn-success">Cadastrar</button>
+    </div>
+    @endif
+
+    <div class="mb-3">
+      <label class="form-label">Endereço</label>
+      <input value="{{old ('endereco')}}" name="endereco" class="form-control @error('endereco') is-invalid @enderror">
+      @if ($errors->has('endereco'))
+      <div class="invalid-feedback">
+        {{$errors->first('endereco')}}
+      </div>
+    
+    </div>
+    @endif
+
+    <div class="mb-3">
+      <label class="form-label">Logradouro</label>
+      <input value="{{old ('logradouro')}}" name="logradouro" class="form-control @error('logradouro') is-invalid @enderror">
+      @if ($errors->has('logradouro'))
+      <div class="invalid-feedback">
+        {{$errors->first('logradouro')}}
+      </div>
+    </div>
+    @endif
+   
+    
+    <div class="mb-3">
+      <label class="form-label">Bairro</label>
+      <input value="{{old ('bairro')}}" name="bairro" class="form-control @error('bairro') is-invalid @enderror">
+      @if ($errors->has('bairro'))
+      <div class="invalid-feedback">
+        {{$errors->first('bairro')}}
+      </div>
+    </div>
+    @endif
+
+    
+    <button type="submit" class="mt-2 btn btn-success">Cadastrar</button>
   </form>
 
-
+  
 
 @endsection
