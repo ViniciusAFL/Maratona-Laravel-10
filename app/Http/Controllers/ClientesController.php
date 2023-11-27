@@ -36,9 +36,8 @@ class ClientesController extends Controller
     public function cadastrarCliente(FormRequestClientes $request) 
     {
         if($request->method() == "POST"){
-            $prods = $request->all();
-            
-            Cliente::create($prods);
+            $dados = $request->all();
+            Cliente::create($dados);
             Toastr::success('Cadastrado com sucesso!');
             return redirect()
             ->route('clientes.index');
@@ -48,22 +47,20 @@ class ClientesController extends Controller
         return view('clientes.create');
     }
 
-    public function AtualizarCliente(Request $request, int $id) 
+    public function AtualizarCliente(FormRequestClientes $request, int $id) 
     {   
         if($request->method() == "PUT"){
             //Atualiza os dados
-             $prods = $request->all();
-             $componentes = new Componentes();
-             $prods['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($prods['valor']);
+             $dados = $request->all();
              $buscaregistro = Cliente::find($id);
-             $buscaregistro->update($prods);
+             $buscaregistro->update($dados);
 
              return redirect()
-             ->route('produtos.index');
+             ->route('clientes.index');
         };
         
         //mostrar os dados
-        $findproduto = Cliente::where('id', '=', $id)->first();
-        return view('clientes.atualiza', compact('findproduto'));
+        $findCliente = Cliente::where('id', '=', $id)->first();
+        return view('clientes.atualiza', compact('findCliente'));
     }
 }

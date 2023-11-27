@@ -40,7 +40,7 @@
 
     <div class="mb-3">
       <label class="form-label">Endereço</label>
-      <input value="{{old ('endereco')}}" name="endereco" class="form-control @error('endereco') is-invalid @enderror">
+      <input id="endereco" value="{{old ('endereco')}}" name="endereco" class="form-control @error('endereco') is-invalid @enderror">
       @if ($errors->has('endereco'))
       <div class="invalid-feedback">
         {{$errors->first('endereco')}}
@@ -51,7 +51,7 @@
 
     <div class="mb-3">
       <label class="form-label">Logradouro</label>
-      <input value="{{old ('logradouro')}}" name="logradouro" class="form-control @error('logradouro') is-invalid @enderror">
+      <input id="logradouro" value="{{old ('logradouro')}}" name="logradouro" class="form-control @error('logradouro') is-invalid @enderror">
       @if ($errors->has('logradouro'))
       <div class="invalid-feedback">
         {{$errors->first('logradouro')}}
@@ -62,7 +62,7 @@
     
     <div class="mb-3">
       <label class="form-label">Bairro</label>
-      <input value="{{old ('bairro')}}" name="bairro" class="form-control @error('bairro') is-invalid @enderror">
+      <input id="bairro" value="{{old ('bairro')}}" name="bairro" class="form-control @error('bairro') is-invalid @enderror">
       @if ($errors->has('bairro'))
       <div class="invalid-feedback">
         {{$errors->first('bairro')}}

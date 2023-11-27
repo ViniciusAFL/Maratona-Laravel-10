@@ -37,8 +37,8 @@ $("#cep").blur(function () {
         var validacep = /^[0-9]{8}$/;
         if (validacep.test(cep)) {
             $("#logradouro").val("");
-            $("#bairro").val(" ");
-            $("#endereco").val(" ");
+            $("#bairro").val("");
+            $("#endereco").val("");
             $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados) {
                 if (!("erro" in dados)) {
                     $("#logradouro").val(dados.logradouro.toUpperCase());
