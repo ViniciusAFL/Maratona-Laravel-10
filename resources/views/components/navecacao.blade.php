@@ -82,7 +82,7 @@
                 </ul>
             </li>
             <li>
-                <a href="#" class="nav-link px-0 align-middle">
+                <a href="{{ route('vendas.index') }}" class="nav-link px-0 align-middle">
                     <i class="fa-solid fa-cart-shopping"></i> <span class="ms-1 d-none d-sm-inline">Venda</span> </a>
             </li>
             

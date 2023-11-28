@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\VendaController;
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
@@ -48,6 +49,14 @@ Route::prefix('Clientes')
     //Atualiza update
     Route::get('/AtualizarCliente/{id}', 'AtualizarCliente')->name('clientes.atualizar');
     Route::put('/AtualizarCliente/{id}', 'AtualizarCliente')->name('clientes.atualizar');
+});
 
 
+Route::prefix('Vendas')
+->controller(VendaController::class)
+->group(function () {
+    Route::get('/', 'index')->name('vendas.index');
+    //Cadastro Create
+    Route::get('/cadastrarVenda', 'cadastrarVenda')->name('vendas.cadastrar');
+    Route::post('/cadastrarVenda', 'cadastrarVenda')->name('vendas.cadastrar');
 });
