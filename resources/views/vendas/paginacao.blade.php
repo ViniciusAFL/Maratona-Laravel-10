@@ -35,7 +35,7 @@
 
                         <td>
                             <meta name="csrf-token" content="{{csrf_token()}}">
-                            <a class="btn btn-primary btn-sm">Enviar E-mail</a>
+                            <a  href="{{route('enviaComprovantePorEmail.venda', $venda->id)}}" class="btn btn-primary btn-sm">Enviar E-mail</a>
                         </td>
 
                     </tr>
