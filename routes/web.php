@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdutosController;
 use App\Http\Controllers\VendaController;
 use Illuminate\Routing\RouteGroup;
@@ -20,6 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+
 
 Route::prefix('produtos')
 ->controller(ProdutosController::class)
@@ -61,3 +64,10 @@ Route::prefix('Vendas')
     Route::post('/cadastrarVenda', 'cadastrarVenda')->name('vendas.cadastrar');
     Route::get('/enviaComprovantePorEmail/{id}', [VendaController::class, 'enviaComprovantePorEmail'])->name('enviaComprovantePorEmail.venda');
 });
+
+Route::prefix('dashboard')
+->controller(DashboardController::class)
+->group(function(){
+    Route::get('/', 'index')->name('dashboard.index');
+});
+

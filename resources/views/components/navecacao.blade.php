@@ -75,12 +75,12 @@
                     <i class="fa-solid fa-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                 </a>
             </li>
+            
             <li>
-                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                    <i class="fa-solid fa-display"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
-                <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                </ul>
+                <a href="{{ route('dashboard.index') }}" class="nav-link px-0 align-middle">
+                   <i class="fa-solid fa-display"></i>  <span class="ms-1 d-none d-sm-inline">Dashboard</span> </a>
             </li>
+                
             <li>
                 <a href="{{ route('vendas.index') }}" class="nav-link px-0 align-middle">
                     <i class="fa-solid fa-cart-shopping"></i> <span class="ms-1 d-none d-sm-inline">Venda</span> </a>
